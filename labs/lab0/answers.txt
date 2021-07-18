@@ -1,0 +1,39 @@
+1. Show file permissions for normal and hidden files in a directory
+----------------------------------------------------------------
+$ ls -la
+
+
+2. Move files from one directory to another
+----------------------------------------
+$ mv /path/to/src/* /path/to/dest/
+
+
+3. Change a file's permissions
+---------------------------
+$ chmod $OCTAL_CODE /path/to/file
+
+
+4. Show the absolute path of the directory you're currently in
+-----------------------------------------------------------
+$ pwd
+
+
+5. Which command looks through the names of files and folders (recursively) for a keyword?
+---------------------------------------------------------------------------------------
+$ find ./ -name 'keyword'
+./keyword
+./keyword/keyword
+
+
+6. Which command displays real-time information about processes running on the system?
+-----------------------------------------------------------------------------------
+$ ps aux
+
+
+7. Which 4-letter command can help you find the difference between two files?
+--------------------------------------------------------------------------
+$ diff example1.txt example2.txt 
+1c1
+< These are my contents! Go find your own!
+---
+> These are my continents! Go find your own!
