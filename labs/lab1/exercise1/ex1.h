@@ -2,7 +2,7 @@
 #define EX_1_H
 
 typedef struct DNA_sequence {
-    char sequence [21];
+    char sequence[21];
     int A_count;
     int C_count;
     int G_count;

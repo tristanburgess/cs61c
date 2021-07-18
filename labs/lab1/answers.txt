@@ -1,13 +1,79 @@
 Exercise 1:
-1.
+1. I have a variable var and I want to use an assert statement to stop execution if var is false. 
+-- What argument should be passed to assert?
+var s.t. assert(var) succeeds if var is true and fails if var is false.
+
+
 Exercise 2:
-1.
-2.
-3.
-4.
-5.
-6.
-7.
+1. What’s the first thing we should fix before running our code (2 words)?
+--
+Compiler warnings.
+
+2. What flag do we need to add when compiling when we want to run code in gdb?
+--
+-g
+which produces debugging information in the compiled binary, specifically targeted for use with GDB.
+
+3. What command do you use to step over a function?
+--
+next or n
+
+4. How would you set a breakpoint on line 37?
+--
+b filename.c:37
+
+5. How would you set a breakpoint on line 48 that will only stop when the variable i is 4?
+--
+b filename.c:48 if i = 4
+
+6. Take a look at the gdb reference card. What command would you use to display all defined breakpoints?
+--
+info b
+
+7. Take a look at the gdb reference card. What command would you use to delete breakpoint #5?
+--
+del 5
+
+
 Exercise 3:
-1.
-2.
+1. When do we use double pointers?
+--
+When we need to modify a reference to the memory address of the pointer to the thing being pointed to.
+
+Let's say that we have the following struct:
+
+typedef struct Node {
+    int data;
+    struct Node *next;
+} Node;
+
+We want to have a function called update_integer that will update the value of an integer. It’s signature should look like:
+void update_integer(SOMETYPE int_to_update)
+
+We want to have a function called update_head that will update the head of a list. It’s signature should look like:
+void update_head(SOMETYPE head_to_update)
+
+    a. What should be the type of int_to_update?
+    --
+    int *
+
+    b. How would we call update_integer to update the data field of node1?
+    --
+    update(&(head->data));
+
+    c. What should be the type of head_to_update?
+    --
+    Node **
+
+    d. How would we call update_head to ensure that head is updated properly?
+    --
+    update_head(&head);
+
+
+2. If I have a pointer ptr to a struct s which has some field data, what command would I use to print data in GDB?
+--
+p (*ptr)->data
+
+3. In GDB, what command do I use to print out the variable located at the address stored in var?
+--
+p *var
