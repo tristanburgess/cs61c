@@ -12,18 +12,27 @@ ifeq ($(UNAME_S), Linux)
     MEMCHECK=valgrind --tool=memcheck --leak-check=full --track-origins=yes
 endif
 
+LL_OBJS=linked_list.o test_linked_list.o
+LL_PROG=linked_list
+
 BIT_OPS_OBJS=bit_ops.o test_bit_ops.o
 BIT_OPS_PROG=bit_ops
 
 LFSR_OBJS=lfsr.o test_lfsr.o
 LFSR_PROG=lfsr
 
-VECTOR_OBJS=vector.o vector-test.o
-VECTOR_PROG=vector-test
+VECTOR_OBJS=vector.o test_vector.o
+VECTOR_PROG=vector
 
-BINARIES=$(VECTOR_PROG) $(BIT_OPS_PROG) $(LFSR_PROG)
+BINARIES=${LL_PROG} $(VECTOR_PROG) $(BIT_OPS_PROG) $(LFSR_PROG)
 
 all: $(BINARIES)
+
+$(LL_PROG): $(LL_OBJS)
+	$(CC) $(CFLAGS) -g -o $(LL_PROG) $(LL_OBJS) $(LDFLAGS)
+
+$(VECTOR_PROG): $(VECTOR_OBJS)
+	$(CC) $(CFLAGS) -g -o $(VECTOR_PROG) $(VECTOR_OBJS) $(LDFLAGS)
 
 $(BIT_OPS_PROG): $(BIT_OPS_OBJS)
 	$(CC) $(CFLAGS) -g -o $(BIT_OPS_PROG) $(BIT_OPS_OBJS) $(LDFLAGS)
@@ -40,11 +49,11 @@ test_bit_ops.c: bit_ops.h
 .c.o:
 	$(CC) -c $(CFLAGS) $<
 
-vector-memcheck: $(VECTOR_PROG)
+vector_memcheck: $(VECTOR_PROG)
 	$(MEMCHECK) ./$(VECTOR_PROG)
 
 clean:
 	-rm -rf core *.o *~ "#"*"#" Makefile.bak $(BINARIES) *.dSYM
 
 vector.c: vector.h
-vector-test.c: vector.h
+test_vector.c: vector.h
