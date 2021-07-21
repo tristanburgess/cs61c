@@ -5,6 +5,7 @@
 
 int main(int argc, char **argv) {
     vector_t *v;
+    printf("TEST 1\n");
 
     printf("Calling vector_new()\n");
     v = vector_new();
@@ -44,7 +45,46 @@ int main(int argc, char **argv) {
 
     vector_delete(v);
 
-    printf("Test complete.\n");
+    printf("TEST 2\n");
+    printf("vector_new()\n");
+    v = vector_new();
+
+    printf("Doing a vector_set()s to establish capacity of 8\n");
+    vector_set(v, 7, 0);
+
+    printf("These should all return 0 (vector_get()): ");
+    printf("%d ", vector_get(v, 0));
+    printf("%d ", vector_get(v, 1));
+    printf("%d ", vector_get(v, 2));
+    printf("%d ", vector_get(v, 3));
+    printf("%d ", vector_get(v, 4));
+    printf("%d ", vector_get(v, 5));
+    printf("%d ", vector_get(v, 6));
+    printf("%d\n", vector_get(v, 7));
+
+    printf("Doing a bunch of vector_set()s\n");
+    vector_set(v, 0, -1);
+    vector_set(v, 1, -2);
+    vector_set(v, 2, -3);
+    vector_set(v, 3, -4);
+    vector_set(v, 4, -5);
+    vector_set(v, 5, -6);
+    vector_set(v, 6, -7);
+    vector_set(v, 7, -8);
+
+    printf("These should be equal:\n");
+    printf("-1 = %d\n", vector_get(v, 0));
+    printf("-2 = %d\n", vector_get(v, 1));
+    printf("-3 = %d\n", vector_get(v, 2));
+    printf("-4 = %d\n", vector_get(v, 3));
+    printf("-5 = %d\n", vector_get(v, 4));
+    printf("-6 = %d\n", vector_get(v, 5));
+    printf("-7 = %d\n", vector_get(v, 6));
+    printf("-8 = %d\n", vector_get(v, 7));
+
+    vector_delete(v);
+
+    printf("TEST COMPLETE\n");
 
     return 0;
 }
